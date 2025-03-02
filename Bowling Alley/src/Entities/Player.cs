@@ -14,16 +14,24 @@ namespace Bowling_Alley.src
         public string Username { get; set; }
         [Required]
         public int Score { get; set; }
-        
+        [Required]
+        public int Wins { get; set; }
+
         public Player(string username)
         {
             Username = username;
             Score = 0;
+            Wins = 0;
         }
 
         public void AddScore(int points)
         {
             Score += points;
+        }
+
+        public void IncrementWins()
+        {
+            Wins++;
         }
     }
 }

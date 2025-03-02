@@ -11,43 +11,75 @@ namespace Bowling_Alley.src
         {
             ConsoleLogger logger = new();
             PlayerFactory playerFactory = new();
+            int playerCount = 0;
 
-            logger.Log("Välkommen till Fantasi Bowling!\nTryck 1 för att starta nytt spel eller 2 för att avsluta.");
+            logger.Log("Välkommen till Fantasi Bowling!\n1 för att starta nytt spel\n2 för att se highscore\n3 för att avsluta\n");
+            Console.Write("Val: ");
+
             var userInput = Console.ReadLine();
+            bool continueLoop = true;
 
-            if (userInput == "1")
+            do
             {
-                List<Player> players = new();
-                do
+                if (userInput == "1")
                 {
-                    logger.Log("Skriv in namn: ");
-                    var name = Console.ReadLine();
+                    List<Player> players = new();                    
+                    do
+                    {
+                        logger.Log("Skriv in namn: ");
+                        var name = Console.ReadLine();
 
-                    Player player = playerFactory.CreatePlayer(name);
-                    players.Add(player);
-                    logger.Log($"Spelare {name} har skapats");
+                        Player player = playerFactory.CreatePlayer(name);
+                        players.Add(player);
+                        logger.Log($"Spelare {name} har skapats\n");
+                        playerCount += 1;
 
-                    logger.Log("Vill du lägga till flera spelare? (Ja/Nej)");
+                    } while (playerCount < 2);
+
+                    GameLogic gameLogic = new();
+                    AddPlayerToDb addPlayerToDb = new();
+                    addPlayerToDb.Add(players);
+
+                    gameLogic.StartGame(players, logger);
+                    continueLoop = false;
+                }
+
+                else if (userInput == "2")
+                {
+                    DataContext dataContext = DataContext.Instance;
+                    HighscoreService highscoreService = new(dataContext);
+                    var topPlayers = highscoreService.GetHighscore(3);
+
+                    logger.Log("Topp 3 spelare\n____________________________");
+                    Console.WriteLine("");
+                    foreach (var player in topPlayers)
+                    {
+                        logger.Log($"{player.Username} - {player.Wins} vinster");
+                    }                    
+                    Console.Write("____________________________\n\n");
+                    
+                    logger.Log("Gör ett val:\n1 för att starta nytt spel\n2 för att se highscore\n3 för att avsluta");
+                    Console.Write("\nVal: ");
+
                     userInput = Console.ReadLine();
 
-                } while (userInput.ToLower() != "nej");
+                    if (userInput == "3")
+                    {
+                        continueLoop = false;
+                    }
+                }
 
-                GameLogic gameLogic = new();
-                AddPlayerToDb addPlayerToDb = new();
-                addPlayerToDb.Add(players);
+                else if (userInput == "3")
+                {
+                    logger.Log("Spelet avslutas...\nSes en annan gång!");
+                    return;
+                }
 
-                gameLogic.StartGame(players, logger);
-            }
-
-            else if (userInput == "2")
-            {
-                return;
-            }
-
-            else
-            {
-                logger.Log("Ogiltig inmatning");
-            }
+                else
+                {
+                    logger.Log("Ogiltig inmatning");
+                }
+            } while (continueLoop == true);
         }
     }
 }
