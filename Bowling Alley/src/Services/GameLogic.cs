@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace Bowling_Alley.src
 {
     public class GameLogic
@@ -46,9 +41,9 @@ namespace Bowling_Alley.src
                 if (winners.Any())
                 {
                     foreach (var winner in winners)
-                    {
-                        winner.IncrementWins();
+                    {                        
                         logger.Log($"Spelare {winner.Username} vann med {winner.Score} poäng!\n");
+                        AddPointToWinner(winner.Id);
                     }
                 }
                 else

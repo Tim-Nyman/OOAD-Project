@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bowling_Alley.src
 {
@@ -27,11 +23,6 @@ namespace Bowling_Alley.src
         public void AddScore(int points)
         {
             Score += points;
-        }
-
-        public void IncrementWins()
-        {
-            Wins++;
         }
     }
 }
