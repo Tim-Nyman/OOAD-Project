@@ -15,9 +15,8 @@ namespace Bowling_Alley.src
         private DataContext()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                    .UseSqlServer("Data Source=DESKTOP-OB8A5A7;Initial Catalog=InlUppgift;Integrated Security=SSPI;TrustServerCertificate=True;")
-                    .Options;
-
+                    .UseSqlServer("Data Source=DESKTOP-OB8A5A7;Initial Catalog=InlUppgift;Integrated Security=SSPI;TrustServerCertificate=True;").Options;
+                    
             _dbContext = new AppDbContext(options);
         }
 

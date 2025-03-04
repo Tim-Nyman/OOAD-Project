@@ -23,7 +23,7 @@ namespace Bowling_Alley.src
             {
                 if (userInput == "1")
                 {
-                    List<Player> players = new();                    
+                    List<Player> players = new();
                     do
                     {
                         logger.Log("Skriv in namn: ");
@@ -55,10 +55,13 @@ namespace Bowling_Alley.src
                     foreach (var player in topPlayers)
                     {
                         logger.Log($"{player.Username} - {player.Wins} vinster");
-                    }                    
+                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("____________________________\n\n");
-                    
-                    logger.Log("Gör ett val:\n1 för att starta nytt spel\n2 för att se highscore\n3 för att avsluta");
+                    Console.ResetColor();
+
+
+                    logger.Log("Gör ett val\n1 för att starta nytt spel\n2 för att se highscore\n3 för att avsluta");
                     Console.Write("\nVal: ");
 
                     userInput = Console.ReadLine();
