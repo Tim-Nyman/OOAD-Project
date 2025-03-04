@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bowling Alley")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67c0065f05475760bc48c3b872cba5804efffea8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46da50ae9431c99ef1b4e8c86037369887321914")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bowling Alley")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bowling Alley")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -55,10 +55,8 @@ namespace Bowling_Alley.src
                     Console.Write("____________________________\n\n");
                     Console.ResetColor();
 
-
                     logger.Log("Gör ett val\n1 för att starta nytt spel\n2 för att se highscore\n3 för att avsluta");
                     Console.Write("\nVal: ");
-
                     userInput = Console.ReadLine();
 
                     if (userInput == "3")

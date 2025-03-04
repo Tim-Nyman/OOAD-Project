@@ -41,7 +41,7 @@ namespace Bowling_Alley.src
                 if (winners.Any())
                 {
                     foreach (var winner in winners)
-                    {                        
+                    {
                         logger.Log($"Spelare {winner.Username} vann med {winner.Score} poäng!\n");
                         AddPointToWinner(winner.Id);
                     }
@@ -63,11 +63,11 @@ namespace Bowling_Alley.src
 
                 } while (continueGame != "ja" && continueGame != "nej");
 
-            } while (continueGame.ToLower() != "nej");
+            } while (continueGame.Trim().ToLower() != "nej");
         }
 
         private void LogPlayerScore(Player player, int score, ConsoleLogger logger)
-        {        
+        {
             logger.Log($"{player.Username} fick {score} poäng!");
         }
     }
